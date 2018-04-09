@@ -1,0 +1,7 @@
+vets_homepage:
+    path:     /
+    defaults: { _controller: VetsBundle:Default:index }
+
+shop_vets:
+    path:     /vets
+    defaults: { _controller: VetsBundle:Default:Vets }

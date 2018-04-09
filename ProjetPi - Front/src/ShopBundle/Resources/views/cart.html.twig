@@ -1,0 +1,85 @@
+{% extends ":Layout:Layout.html.twig" %}
+{% block content %}
+<!--Inner Banner Content Start-->
+<section class="cp-inner-banner">
+    <div class="container">
+        <div class="cp-inner-banner-outer">
+            <h2>Cart</h2>
+            <!--Breadcrumb Start-->
+            <ul class="breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li>Products</li>
+                <li class="active">Cart</li>
+            </ul><!--Breadcrumb End-->
+        </div>
+    </div>
+</section><!--Inner Banner Content End-->
+
+<!--Main Content Start-->
+<div class="cp-main-content">
+
+    <!--Cart Section Start-->
+    <section class="cp-cart-section pd-tb100">
+        <div class="container">
+
+            <!--Cart Table Row Start-->
+            <div class="cart-table-row">
+                <div class="woocommerce">
+                    <form method="get">
+                        <table class="cp-shop_table">
+                            <thead>
+                            <tr>
+                                <th class="product-remove"></th>
+                                <th class="product-thumbnail">Product</th>
+                                <th class="product-price">Price</th>
+                                <th class="product-quantity">Quantity</th>
+                                <th class="product-subtotal">Total</th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+    {% for panier in paniers %}
+                            <tr class="cart_item">
+                                <td class="product-remove">
+                                    <a href="{{ path('Delete_Produit', { 'id': panier.id }) }}"><i class="fa fa-trash"></i></a>
+                                </td>
+                                <td class="product-thumbnail">
+                                    <a href="#"><img src="{{ asset('images/Produits/'~panier.idProduit.imageproduit) }}" width="100" height="100" alt=""></a>
+                                    <span>{{ panier.idProduit.nomproduit }}</span>
+                                </td>
+
+                                <td class="product-price">
+                                    {{ panier.idProduit.prix }}
+                                </td>
+                                <td class="product-quantity">
+                                    <div class="input-append spinner" data-trigger="spinner">
+                                        <span class="spin-down" data-spin="down"><i class="fa fa-minus"></i></span>
+                                        <input type="text" value="{{ panier.quantite }}" data-rule="quantity">
+                                        <span class="spin-up" data-spin="up"><i class="fa fa-plus"></i></span>
+                                    </div>
+                                </td>
+                                <td class="product-subtotal">
+                                    {{ panier.idProduit.prix*panier.quantite }}DT
+                                </td>
+                            </tr>
+        {% endfor %}
+
+                            </tbody>
+                        </table>
+                    </form>
+                    <!--Cart Bottom Holder Start-->
+                    <div class="cp-cart-bottom">
+                        <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+                        <h3>THERE ARE {{ resultCount }} ITEMS IN CART</h3>
+                        <h3>Total : {{ prixTotal }}DT</h3>
+                        <a href="{{ path('shop_store') }}" class="cp-btn-style3">Shop</a>
+                        <a href="{{ path('AddCommande', { 'prixTotal': prixTotal })  }}" class="cp-btn-style3">Payement</a>
+                    </div><!--Cart Bottom Holder End-->
+                </div>
+            </div><!--Cart Table Row End-->
+        </div>
+    </section><!--Cart Section End-->
+
+</div><!--Main Content End-->
+
+    {% endblock content %}

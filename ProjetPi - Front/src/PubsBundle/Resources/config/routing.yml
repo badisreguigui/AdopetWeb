@@ -1,0 +1,7 @@
+pubs_homepage:
+    path:     /
+    defaults: { _controller: PubsBundle:Default:index }
+
+pubs_:
+    path:     /pubs
+    defaults: { _controller: PubsBundle:Default:pubs }

@@ -1,0 +1,7 @@
+adopt_homepage:
+    path:     /
+    defaults: { _controller: AdoptBundle:Default:index }
+
+adopt_:
+    path:     /adopt
+    defaults: { _controller: AdoptBundle:Default:adopt }
