@@ -1,0 +1,13 @@
+<form method="POST">
+    <label>Boutique</label>
+    <select name="boutique">
+        {% for boutique in boutiques %}
+            <option  value="{{ boutique.Idboutique }}">
+
+                {{ boutique.Nomboutique }}
+            </option>
+        {% endfor %}
+    </select>
+    <input type="submit" value="Ajouter Promotion" name="add">
+    <input type="submit" value="Supprimer Promotion" name="delete">
+</form>
