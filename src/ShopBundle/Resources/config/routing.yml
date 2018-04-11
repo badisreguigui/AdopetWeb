@@ -1,0 +1,12 @@
+shop_homepage:
+    path:     /
+    defaults: { _controller: ShopBundle:Default:index }
+
+shop_home:
+    path:     /home
+    defaults: { _controller: ShopBundle:Default:Layout }
+
+shop_store:
+    path:     /shop
+    defaults: { _controller: ShopBundle:Produit:Produits }
+
