@@ -1,0 +1,29 @@
+pubs_homepage:
+    path:     /
+    defaults: { _controller: PubsBundle:Default:index }
+
+pubs_:
+    path:     /pubs
+    defaults: { _controller: PubsBundle:Pubs:Pubs }
+pubs:
+    path:     /pubsadd
+    defaults: { _controller: PubsBundle:Pubs:Add }
+
+onepub:
+    path:     /onepub
+    defaults: { _controller: PubsBundle:Pubs:onepub }
+modifpub:
+    path:     /modifpub/{id}/
+    defaults: { _controller: PubsBundle:Pubs:modifpub }
+supprimerpub:
+    path:     /suppub/{id}/
+    defaults: { _controller: PubsBundle:Pubs:supp }
+signalerpub:
+    path:     /signal/{idpub}/
+    defaults: { _controller: PubsBundle:Pubs:signal }
+pubs_stat:
+    path:     /stat
+    defaults: { _controller: PubsBundle:Pubs:indexx }
+pub_nom:
+    path:     /aaa
+    defaults: { _controller: PubsBundle:Pubs:getnom }
