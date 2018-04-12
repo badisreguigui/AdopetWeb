@@ -1,0 +1,23 @@
+pet_sitting_demande:
+    resource: "@PetSittingBundle/Resources/config/routing/demandesitting.yml"
+    prefix:   /demande
+
+pet_sitting_offre:
+    resource: "@PetSittingBundle/Resources/config/routing/offresitting.yml"
+    prefix:   /offre
+
+pet_sitting_homepage:
+    path:     /petsit
+    defaults: { _controller: PetSittingBundle:Default:petsit }
+
+pet_sitting_admin:
+    path:     /admin
+    defaults: { _controller: PetSittingBundle:Default:LayoutAdmin }
+    
+pet_sitting_home:
+    path:     /home1
+    defaults: { _controller: PetSittingBundle:Default:Layout }
+
+mgilet_notifications:
+    resource: "@MgiletNotificationBundle/Controller/"
+    prefix: /notifications

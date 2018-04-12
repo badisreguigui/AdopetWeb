@@ -1,0 +1,149 @@
+{% extends ":Layout:Layout.html.twig" %}
+
+{% block content %}
+    <style>
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            padding: 12px 16px;
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        label{
+
+            font-size: 18px;
+            font-weight: 300;
+            z-index: -1;
+        }
+    </style>
+
+    <section class="cp-inner-banner">
+        <div class="container">
+            <div class="cp-inner-banner-outer">
+                <h3 style="font-style: italic ; font-weight: bold;text-shadow:  -2px 0 3px #fff;">Remplissez ce formulaire :</h3>
+            </div>
+        </div>
+    </section>
+
+    {{ form_start(form) }}
+    <!--formulaire demande-->
+    <div class="cp-contact-inner">
+        <form action="DemandeSittingType.php" method="post">
+            <div class="row">
+
+                <!--titre-->
+                <div class="col-md-12 col-sm-12">
+                    <div class="input-field">
+                        {{ form_widget(form.titre) }}
+                        <label>titre*</label>
+                    </div>
+                </div>
+                <br>
+
+                <!--lieu-->
+                <div class="col-md-12 col-sm-12">
+                        <label>lieu*</label>
+                    <br>
+                        {{ form_widget(form.lieu) }}
+                </div>
+                <br>
+                <br>
+
+                <!--num-->
+                <div class="col-md-12 col-sm-12">
+                    <div class="input-field" style="margin-top: 30px">
+                        {{ form_widget(form.num_tel) }}
+                        <label>Téléphone:*</label>
+                    </div>
+                </div>
+                <br>
+
+                <!--date et temps-->
+                <div class="col-md-12 col-sm-12">
+                    <label style="font-size: 18px;font-weight: 300;z-index: -1;">Date début:</label>
+                    <div class="input-field date-field">{{ form_widget(form.date_debut_demande) }}</div>
+                    <label>Date fin:</label>
+                    <div class="input-field time-field" id="datepicker">{{ form_widget(form.date_fin_demande) }}</div>
+                </div>
+                <div class="col-md-12 col-sm-12">
+                    <label>Temps début:</label>
+                    <div class="input-field date-field">{{ form_widget(form.tmp_debut) }}</div>
+                    <label>Temps fin:</label>
+                    <div class="input-field time-field">{{ form_widget(form.tmp_fin) }}</div>
+                </div>
+
+                <!--description-->
+                <div class="col-md-12 col-sm-12">
+                    <div class="input-field textarea-field">
+                        {{ form_widget(form.description)}}
+                        <label >Description*</label>
+                    </div>
+                </div>
+
+                <br>
+                <!--choix préferences-->
+                <div>
+                    <label> Vous souhaitez...</label>
+                    <ul style="list-style-type: none">
+                        <li>
+                            <label>
+                                {{ form_widget(form.promenade) }} qu'on promène votre animal ?</label>
+                        </li>
+                        <li>
+                            <label>
+                                {{ form_widget(form.nourriture) }} qu'on nourrisse votre animal ?</label>
+                        </li>
+                        <li>
+                            <label>
+                                {{ form_widget(form.visite) }} rendre visite à votre animal ? </label>
+                        </li>
+                    </ul>
+                </div>
+                <br>
+
+                <!--choix= animal-->
+                <div class="dropdown">
+                    <span><label> Votre animal est un...</label></span>
+                    <div class="dropdown-content">
+                        <label>
+                            {{ form_widget(form.chat)}} Chat
+                        </label>
+                        <br>
+                        <label>
+                            {{ form_widget(form.chien) }} Chien
+                        </label>
+                        <br>
+                        <label>
+                            {{ form_widget(form.autre) }} Autre
+                        </label>
+                    </div>
+                </div>
+                <br>
+
+                <!--prix-->
+                <div class="col-md-12 col-sm-12" style="margin-top: 30px">
+                    <div class="input-field">
+                        {{ form_widget(form.prix_souhaite) }}
+                        <label>Budget:</label>
+                    </div>
+                </div>
+                {{ form_end(form) }}
+
+                <input type="submit" value="Create" style="margin-bottom: 25px; margin-left: 250px"/>
+
+            </div>
+        </form>
+    </div>
+{% endblock %}

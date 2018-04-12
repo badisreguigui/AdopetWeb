@@ -1,0 +1,34 @@
+offre_index:
+    path:     /all
+    defaults: { _controller: "PetSittingBundle:OffreSitting:index" }
+    methods:  GET
+
+offre_mine:
+    path:     /mine
+    defaults: { _controller: "PetSittingBundle:OffreSitting:mine" }
+    methods:  GET
+
+offre_show:
+    path:     /{id_offre}/show
+    defaults: { _controller: "PetSittingBundle:OffreSitting:show" }
+    methods:  GET
+
+offre_showmine:
+    path:     /{id_offre}/showmine
+    defaults: { _controller: "PetSittingBundle:OffreSitting:showmine" }
+    methods:  GET
+
+offre_new:
+    path:     /new
+    defaults: { _controller: "PetSittingBundle:OffreSitting:new" }
+    methods:  [GET, POST]
+
+offre_edit:
+    path:     /{id_offre}/edit
+    defaults: { _controller: "PetSittingBundle:OffreSitting:edit" }
+    methods:  [GET, POST]
+
+offre_delete:
+    path:     /{id_offre}/delete
+    defaults: { _controller: "PetSittingBundle:OffreSitting:delete" }
+    methods:  DELETE

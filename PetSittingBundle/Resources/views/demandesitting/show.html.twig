@@ -1,0 +1,126 @@
+{% extends ":Layout:Layout.html.twig" %}
+
+{% block content %}
+    <style>
+        #element1 {display:inline-block;margin-right:10px;}
+        a:hover {
+            background-color: #e4b9c0;
+            color: gray;
+            position: relative;
+        }
+        a[atitle]:hover:after {
+            content: attr(atitle);
+            padding: 4px 8px;
+            color: #333;
+            position: absolute;
+            left: 0;
+            top: 100%;
+            white-space: nowrap;
+            z-index: inherit;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+            -moz-box-shadow: 0px 0px 4px #222;
+            -webkit-box-shadow: 0px 0px 4px #222;
+            box-shadow: 0px 0px 4px #222;
+            background-image: -moz-linear-gradient(top, #eeeeee, #cccccc);
+            background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #eeeeee), color-stop(1, #cccccc));
+            background-image: -webkit-linear-gradient(top, #eeeeee, #cccccc);
+            background-image: -moz-linear-gradient(top, #eeeeee, #cccccc);
+            background-image: -ms-linear-gradient(top, #eeeeee, #cccccc);
+            background-image: -o-linear-gradient(top, #eeeeee, #cccccc);
+        }
+</style>
+
+<!--Main Content Start-->
+<div class="cp-main-content">
+
+    <!--Products Section Start-->
+    <section class="cp-product-section pd-t100">
+        <div class="container">
+            <!-- Info Start-->
+            <div class="cp-pro-detail-info">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                        <div class="item">
+                            <img src="{{ asset('images/petsitting/demande.jpg') }}" width="590" height="390" >
+                            <a href="images/product/pro-slider-img-01.jpg" data-rel="prettyPhoto"></a>
+                        </div>
+                        <br>
+                        <br>
+                        <br>
+
+                        {% if demandeSitting.iduser != app.user.id %}
+
+                        <form action="DemandeFavorisType.php" method="post">
+
+                            <input type="submit" value="favoris" class="btn btn"/>
+                        </form>
+                        {% endif %}
+
+
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+
+                        <h2 style="margin-bottom: 10px; margin-top: 5px; font-weight: bold">{{ demandeSitting.titre }}</h2>
+                        <div class="pro-price">
+                            <span class="new" style="margin-bottom: 20px"><i class="fa fa-map-marker" aria-hidden="true"></i> {{ demandeSitting.lieu }}</span>
+                        </div>
+                        <span class="new" style="font-size: 22px"><i class="fa fa-paw" aria-hidden="true"></i> {% if demandeSitting.chat %} Chat{% elseif demandeSitting.chien %} Chien{% elseif demandeSitting.chien %} Autre{% endif %}</span>
+
+                        <br>
+
+                        <span><i class="fa fa-money" aria-hidden="true"></i></span>
+                        <div id="element1">
+                            <titre style="color: red; font-size: 20px" >{{ demandeSitting.prixsouhaite }} dt</titre>
+                        </div>
+                        <br>
+                        <div style="margin-left: 25px;margin-top: 30px" >
+                            <h3> <i class="fa fa-calendar" aria-hidden="true"></i> De <strong>{{ demandeSitting.datedebutdemande | date('Y-m-d') }}</strong> à <strong>{{ demandeSitting.tmpdebut | date('H:i')  }}</strong></h3>
+                            <h3> Jusqu'au <strong>{{ demandeSitting.datefindemande | date('Y-m-d') }}</strong> à <strong>{{ demandeSitting.tmpfin | date('H:i')  }}</strong></h3>
+                        </div>
+                        <br>
+                        <ul style="list-style-type: none">
+                            <li>
+                                <h4> <i class="fa fa-check-circle-o" aria-hidden="true"></i> {% if demandeSitting.nourriture %}Je préfere un garde qui peux nourrir mon animal{% else %} J'apporte ma propre nourriture {% endif %}</h4>
+                            </li>
+                            <li>
+                                <h4> <i class="fa fa-check-circle-o" aria-hidden="true"></i> {% if demandeSitting.visite %} Je veux visiter mon animal lors de sa garde{% else %} Je ne visiterai pas mon animal lors de sa garde {% endif %}</h4>
+                            </li>
+                            <li>
+                                <h4> <i class="fa fa-check-circle-o" aria-hidden="true"></i> {% if demandeSitting.promenade %} J'aimerai que mon animal soit promené par son garde{% else %} J'interdit au garde de promener mon animal {% endif %}</h4>
+                            </li>
+                        </ul>
+                        <br>
+
+                        <p style="border:3px; border-style:solid; border-color:#e4b9c0; padding: 1em;">{{ demandeSitting.description }} </p>
+                        <br>
+                        <span style="font-size: 22px"><i class="fa fa-mobile" aria-hidden="true"></i></span>
+                        <div id="element1"><p> {{ demandeSitting.numtel }}</p></div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div><!--Product Detail Info End-->
+
+
+
+        <ul style="list-style-type: none">
+            <li>
+                <a href="{{ path('demande_index') }}"style="color: #e4b9c0"> <i class="fa fa-mail-reply" aria-hidden="true"></i> Retour aux demandes</a>
+            </li>
+            {% if demandeSitting.iduser == app.user.id %}
+            <li>
+                <a href="edit" style="color: #0fd8b0"><i class="fa fa-edit" aria-hidden="true"></i>Modifier</a>
+            </li>
+            <li>
+                {{ form_start(delete_form) }}
+                <button type="submit" value="Delete" style="color: red"> <i class="fa fa-trash" aria-hidden="true"></i> Supprimer</button>
+                {{ form_end(delete_form) }}
+            </li>
+            {% endif %}
+        </ul>
+
+
+{% endblock %}
