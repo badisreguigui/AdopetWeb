@@ -1,6 +1,7 @@
 <?php
 
 namespace PubsBundle\Repository;
+use PubsBundle\Entity\Publications;
 
 /**
  * PublicationsRepository
@@ -39,4 +40,6 @@ class PublicationsRepository extends \Doctrine\ORM\EntityRepository
             ->setParameter('idd',$id);
         return count($query->getResult());
     }
+
+
 }

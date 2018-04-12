@@ -80,7 +80,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-9">
+                        <ul class="navList" style="list-style:none;">
                         {% for i in pub %}
+                            <li style="" ><div class="" style="display:none;">{{ i.username }}</div>
                         <div class="col-md-12 col-sm-12">
                             <!--Blog Item Start-->
                             <article class="cp-blog-item">
@@ -121,7 +123,9 @@
                                 </div>
                             </article><!--Blog Item End-->
                         </div>
+                            </li>
                         {% endfor %}
+                        </ul>
                         <!--PAGINATION START-->
                         <div class="pagination-box">
                             <nav>
@@ -143,7 +147,7 @@
                             <!--Widget Start-->
                             <div class="widget widget-search widget-search2">
                                 <form method="get">
-                                    <input type="text" placeholder="Search" required>
+                                    <input type="text" id="search" placeholder="Search" required>
                                     <button type="submit"  class="btn-submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                                 </form>
 
@@ -159,5 +163,14 @@
         </section><!--Blog Section End-->
 
     </div><!--Main Content End-->
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script>
+        $('#search').keyup(function(){
+            var valThis = $(this).val();
+            $('.navList>li').each(function(){
+                var text = $(this).text().toLowerCase();
+                (text.indexOf(valThis) == 0) ? $(this).show() : $(this).hide();
+            });
+        });
+    </script>
 {% endblock content %}
