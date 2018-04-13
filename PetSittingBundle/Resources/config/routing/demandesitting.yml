@@ -1,0 +1,39 @@
+demande_index:
+    path:     /all
+    defaults: { _controller: "PetSittingBundle:DemandeSitting:index" }
+    methods:  GET
+
+demande_mine:
+    path:     /mine
+    defaults: { _controller: "PetSittingBundle:DemandeSitting:mine" }
+    methods:  GET
+
+demande_show:
+    path:     /{id_demande}/show
+    defaults: { _controller: "PetSittingBundle:DemandeSitting:show" }
+    methods:  GET
+
+demande_showmine:
+    path:     /{id_demande}/showmine
+    defaults: { _controller: "PetSittingBundle:DemandeSitting:showmine" }
+    methods:  GET
+
+demande_new:
+    path:     /new
+    defaults: { _controller: "PetSittingBundle:DemandeSitting:new" }
+    methods:  [GET, POST]
+
+demande_edit:
+    path:     /{id_demande}/edit
+    defaults: { _controller: "PetSittingBundle:DemandeSitting:edit" }
+    methods:  [GET, POST]
+
+
+demande_delete:
+    path:     /{id_demande}/delete
+    defaults: { _controller: "PetSittingBundle:DemandeSitting:delete" }
+    methods:  DELETE
+
+pet_sitting_admin:
+    path:     /admin
+    defaults: { _controller: "PetSittingBundle:Default:LayoutAdmin" }

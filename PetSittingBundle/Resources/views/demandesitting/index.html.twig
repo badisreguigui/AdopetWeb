@@ -1,0 +1,96 @@
+{% extends ":Layout:Layout.html.twig" %}
+
+{% block content %}
+
+    <style>
+        span {
+            position: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            -o-text-overflow: ellipsis;
+            white-space: nowrap;
+            width: 100%;
+            display: inline-block;
+            color: white;
+            text-shadow: black;
+            margin: 1px;
+        }
+
+        a:hover {
+            background-color: #e4b9c0;
+            color: gray;
+            position: relative;
+        }
+        a[atitle]:hover:after {
+            content: attr(atitle);
+            padding: 4px 8px;
+            color: #333;
+            position: absolute;
+            left: 0;
+            top: 100%;
+            white-space: nowrap;
+            z-index: inherit;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+            -moz-box-shadow: 0px 0px 4px #222;
+            -webkit-box-shadow: 0px 0px 4px #222;
+            box-shadow: 0px 0px 4px #222;
+            background-image: -moz-linear-gradient(top, #eeeeee, #cccccc);
+            background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #eeeeee),color-stop(1, #cccccc));
+            background-image: -webkit-linear-gradient(top, #eeeeee, #cccccc);
+            background-image: -moz-linear-gradient(top, #eeeeee, #cccccc);
+            background-image: -ms-linear-gradient(top, #eeeeee, #cccccc);
+            background-image: -o-linear-gradient(top, #eeeeee, #cccccc);
+        }
+    </style>
+
+    <section class="cp-inner-banner">
+        <div class="container">
+            <div class="cp-inner-banner-outer">
+                <h2 style="color: #e4b9c0; font-style: italic ; font-weight: bold;text-shadow:  -2px 0 3px #000;">Tous les demandes</h2>
+                <ul style="list-style-type: none;">
+                    <li style="display: inline;margin: 100px;margin-top: 300px">
+                        <a class="gallery-btn" href="fav" style="color: #0fd8b0; font-weight: bold; text-shadow: 0 0 10px white, 0 0 10px white, 0 0 10px white;">Demandes favorites</a>
+                    </li>
+                    <li style="display: inline;margin: 100px;margin-top: 300px">
+                        <a class="gallery-btn" href="mine" style="color: #0fd8b0; text-shadow: 0 0 10px white, 0 0 10px white, 0 0 10px white; font-weight: bold; ">Mes demandes</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section><!--Inner Banner Content End-->
+
+        <section class="cp-gallery-section pd-t100">
+            <div class="container">
+                <div class="row pretty-gallery">
+                    {% for demandeSitting in demandeSittings %}
+                    <div class="col-md-3 col-sm-6" >
+                        <!--Gallery Item Start-->
+                        <figure class="cp-gallery-item">
+                            <img src="{{ asset('images/petsitting/demande.jpg') }}" >
+                            <figcaption class="cp-caption">
+                                <div class="cp-inner">
+                                    <a class="gallery-btn" href="{{ demandeSitting.iddemande  }}\show" style="margin: 0;">{{ demandeSitting.titre }}</a>
+                                    <h4 style="color: #0fd8b0; margin: 10px"> <i class="fa fa-map-marker" ></i> {{ demandeSitting.lieu }}
+                                    </h4>
+                                    <h5 style="color: white; text-shadow: black; margin-top: 20px"> du </h5>
+                                    <h5 style="position: center; color: #e4b9c0" >{{ demandeSitting.datedebutdemande | date('Y-m-d')}}</h5>
+                                    <h5 style="color: white; text-shadow: black;"> au </h5>
+                                    <h5 style="position: center; color: #e4b9c0; margin-bottom: 20px">{{ demandeSitting.datefindemande | date('Y-m-d')}}  </h5>
+
+                                    <span>{{ demandeSitting.description }}</span>
+                                    <ul class="cp-gallery-meta">
+                                        <li style="margin-top: 10px"><a href="{{ demandeSitting.iddemande  }}\show" atitle="Voir détailles"><i class="fa fa-eye" aria-hidden="true"></i></a></li>
+                                    </ul>
+                                </div>
+                            </figcaption>
+                        </figure><!--Gallery Item End-->
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        </div>
+
+{% endblock %}

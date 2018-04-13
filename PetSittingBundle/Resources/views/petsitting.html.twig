@@ -1,0 +1,94 @@
+{% extends ":Layout:Layout.html.twig" %}
+
+{% block content %}
+    <!--Inner Banner Content Start-->
+    <style>
+        
+
+        a:hover {
+            background-color: #e4b9c0;
+            color: gray;
+            position: relative;
+        }
+        a[atitle]:hover:after {
+            content: attr(atitle);
+            padding: 4px 8px;
+            color: #333;
+            position: absolute;
+            left: 0;
+            top: 100%;
+            white-space: nowrap;
+            z-index: inherit;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+            -moz-box-shadow: 0px 0px 4px #222;
+            -webkit-box-shadow: 0px 0px 4px #222;
+            box-shadow: 0px 0px 4px #222;
+            background-image: -moz-linear-gradient(top, #eeeeee, #cccccc);
+            background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #eeeeee),color-stop(1, #cccccc));
+            background-image: -webkit-linear-gradient(top, #eeeeee, #cccccc);
+            background-image: -moz-linear-gradient(top, #eeeeee, #cccccc);
+            background-image: -ms-linear-gradient(top, #eeeeee, #cccccc);
+            background-image: -o-linear-gradient(top, #eeeeee, #cccccc);
+        }
+    </style>
+
+
+    <section class="cp-inner-banner">
+        <div class="container">
+            <div class="cp-inner-banner-outer">
+                <h2 style="font-style: italic ; font-weight: bold;text-shadow:  -2px 0 3px #000;">Pet Sitting</h2>
+            </div>
+        </div>
+    </section><!--Inner Banner Content End-->
+
+
+    <!--Main Content Start-->
+    <div class="cp-main-content">
+        <!--Gallery Section Start-->
+        <section class="cp-gallery-section pd-t100">
+            <div class="container">
+                <div class="row pretty-gallery">
+                    <div class="col-md-6 col-sm-12">
+                        <!--Gallery Item Start-->
+                        <h1 style="font-style: italic ; font-weight: bold; color: #a5a5a5; font-family: 'Trocchi', serif; font-size: 45px; font-weight: normal; line-height: 48px; margin: 0; text-shadow:  -2px 0 3px #000;">Vous cherchez un Pet Sitteur ?</h1>
+                        <figure class="cp-gallery-item">
+                            <img src="{{ asset('images/petsitting/demande.jpg') }}">
+                            <figcaption class="cp-caption">
+                                <div class="cp-inner">
+                                    <a href="demande\all" class="gallery-btn" >Demande de PetSitting</a>
+                                    <p>Vous partez en vacances ou en déplacement et ne savez pas comment faire garder votre chien ? Sachez que AdoPet met a votre disposition notre service de PetSitting alors n'hésitez pas a déposer votre demande personnalisé à vos besoins.</p>
+                                    <ul class="cp-gallery-meta">
+                                        <li><a atitle="Postuler une demande" href="demande\new" role="button"> <i class="fa fa-plus-square"></i> </a></li>
+                                        <li><a atitle="Voir les demandes" href="demande\all" role="button"> <i class="fa fa-eye"></i> </a></li>
+                                    </ul>
+                                </div>
+
+
+                            </figcaption>
+                        </figure><!--Gallery Item End-->
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <!--Gallery Item Start-->
+                        <h1 style="font-style: italic ; font-weight: bold; color: #a5a5a5; font-family: 'Trocchi', serif; font-size: 45px; font-weight: normal; line-height: 48px; margin: 0; text-shadow:  -2px 0 3px #000;">Vous etes un Pet Sitteur ?</h1>
+                        <figure class="cp-gallery-item">
+                            <img src="{{ asset('images/petsitting/offre.jpg') }}" alt="">
+                            <figcaption class="cp-caption">
+                                <div class="cp-inner">
+                                    <a href="#" class="gallery-btn" style="">Offre de PetSitting</a>
+                                    <p>Vous aimez les animaux et souhaitez en faire une activité rémunérée ? Devenez petsitter avec AdoPet, une activité idéale pour accueillir des animaux et profiter de leur compagnie toute l’année !</p>
+                                    <ul class="cp-gallery-meta">
+                                        <li><a atitle="postuler une offre" href="#" class="postuler"></a></li>
+                                    </ul>
+                                </div>
+                            </figcaption>
+                        </figure><!--Gallery Item End-->
+                    </div>
+                </div>
+            </div>
+        </section><!--Gallery Section End-->
+
+
+    </div><!--Main Content End-->
+{% endblock content %}
