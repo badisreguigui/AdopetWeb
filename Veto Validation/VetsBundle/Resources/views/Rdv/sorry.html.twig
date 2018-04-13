@@ -1,0 +1,24 @@
+{% extends ":Layout:Layout.html.twig" %}
+
+{% block content %}
+    <!--Inner Banner Content Start-->
+    <section class="cp-inner-banner">
+        <div class="container">
+            <div class="cp-inner-banner-outer">
+                <h2>Sorry </h2>
+                <h1>This Date is already reserved</h1>
+
+                <figure class="cp-team-thumb">
+                    <img src="{{ asset('images/tenor.gif') }}" alt="">
+                </figure>
+                <br>
+
+                <a href="{{  path('ajouterRendezVous') }}" class="cp-btn-style3">Go Back</a>
+
+            </div>
+        </div>
+    </section><!--Inner Banner Content End-->
+
+
+
+{% endblock content %}
