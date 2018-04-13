@@ -2,6 +2,13 @@ pubs_homepage:
     path:     /
     defaults: { _controller: PubsBundle:Default:index }
 
+redirect:
+    path:     /redirect
+    defaults: { _controller: PubsBundle:Default:Redirection }
+
+pubs_homepageAdmin:
+    path:     /indexAdmin
+    defaults: { _controller: PubsBundle:Default:indexAdmin }
 pubs_:
     path:     /pubs
     defaults: { _controller: PubsBundle:Pubs:Pubs }
@@ -18,6 +25,9 @@ modifpub:
 supprimerpub:
     path:     /suppub/{id}/
     defaults: { _controller: PubsBundle:Pubs:supp }
+supprimerpubb:
+    path:     /suppubb/{id}/
+    defaults: { _controller: PubsBundle:Pubs:suppb }
 signalerpub:
     path:     /signal/{idpub}/
     defaults: { _controller: PubsBundle:Pubs:signal }
@@ -27,3 +37,13 @@ pubs_stat:
 pub_nom:
     path:     /aaa
     defaults: { _controller: PubsBundle:Pubs:getnom }
+
+backpubs:
+    path:     /backpubs
+    defaults: { _controller: PubsBundle:Pubs:showPublication }
+backinsultes:
+    path:     /backinsultes
+    defaults: { _controller: PubsBundle:Insulte:showInsultes}
+addinsultes:
+    path:     /addinsultes
+    defaults: { _controller: PubsBundle:Insulte:addInsultes}

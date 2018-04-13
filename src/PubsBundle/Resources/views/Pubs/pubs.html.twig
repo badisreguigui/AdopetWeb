@@ -80,7 +80,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-9">
+                        <ul class="navList" style="list-style:none;">
                         {% for i in pub %}
+                            <li style="" ><div class="" style="display:none;">{{ i.username }}</div>
                         <div class="col-md-12 col-sm-12">
                             <!--Blog Item Start-->
                             <article class="cp-blog-item">
@@ -98,14 +100,12 @@
                                         <div class="cp-top">
                                             <ul class="cp-meta-listed">
                                                 <li><i class="fa fa-user" aria-hidden="true"></i> {{ i.username}}</li>
-                                                <li><i class="fa fa-user" aria-hidden="true"></i> 762</li>
                                                 <li>
                                                     <i class="fa fa-user" aria-hidden="true"></i>
                                                     {{ i.time }}
                                                 </li>
                                             </ul>
                                             <ul class="right-nav">
-                                                <li><i class="fa fa-heart" aria-hidden="true"></i> 232</li>
                                                 <li class="share share-push"><a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i></a></li>
                                             </ul>
                                             <ul class="cp-social-links share-holder">
@@ -118,12 +118,14 @@
                                             </ul>
                                         </div>
                                         <p>{{ i.description }}</p>
-                                        <a href="{{ path('onepub',{'id':i.id}) }}" class="cp-btn-style3">Read More</a>
+                                        <a href="{{ path('onepub',{'id':i.id}) }}" class="cp-btn-style3">Détails</a>
                                     </div>
                                 </div>
                             </article><!--Blog Item End-->
                         </div>
+                            </li>
                         {% endfor %}
+                        </ul>
                         <!--PAGINATION START-->
                         <div class="pagination-box">
                             <nav>
@@ -145,12 +147,13 @@
                             <!--Widget Start-->
                             <div class="widget widget-search widget-search2">
                                 <form method="get">
-                                    <input type="text" placeholder="Search" required>
+                                    <input type="text" id="search" placeholder="Search" required>
                                     <button type="submit"  class="btn-submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                                 </form>
 
-                            </div><!--Widget End-->
 
+                            </div><!--Widget End-->
+                            <a href="{{ path('pubs_stat') }}" class="cp-btn-style3">Statistiques</a>
 
                         </aside><!--Asidebar Content End-->
                     </div>
@@ -160,5 +163,14 @@
         </section><!--Blog Section End-->
 
     </div><!--Main Content End-->
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script>
+        $('#search').keyup(function(){
+            var valThis = $(this).val();
+            $('.navList>li').each(function(){
+                var text = $(this).text().toLowerCase();
+                (text.indexOf(valThis) == 0) ? $(this).show() : $(this).hide();
+            });
+        });
+    </script>
 {% endblock content %}

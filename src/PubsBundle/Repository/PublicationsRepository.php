@@ -1,6 +1,7 @@
 <?php
 
 namespace PubsBundle\Repository;
+use PubsBundle\Entity\Publications;
 
 /**
  * PublicationsRepository
@@ -13,7 +14,7 @@ class PublicationsRepository extends \Doctrine\ORM\EntityRepository
     public function getpub()
     {
         $query=$this->getEntityManager()
-            ->createQuery("select u.username,p.id,p.image,p.date,p.type,p.time,p.description from PubsBundle:Publications p LEFT JOIN UserBundle:User u WHERE p.iduser = u.id");
+            ->createQuery("select u.username,p.id,p.image,p.date,p.type,p.time,p.description from PubsBundle:Publications p LEFT JOIN UserBundle:User u WHERE p.iduser = u.id ORDER BY p.id DESC ");
 //            ->setParameter('id',$t); //très important! parameterS
         return $query->getResult();
 
@@ -39,4 +40,6 @@ class PublicationsRepository extends \Doctrine\ORM\EntityRepository
             ->setParameter('idd',$id);
         return count($query->getResult());
     }
+
+
 }

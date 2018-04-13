@@ -47,9 +47,8 @@ class PubsController extends Controller
     public function AddAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $list = $em->getRepository('PubsBundle:Publications')->findAll();
+   //     $list = $em->getRepository('PubsBundle:Publications')->findAll();
         $p = new Publications();
-        $msg = '';
         if ($request->isMethod('POST')) {
             $p->setDescription($request->get('desc'));
             $p->setType($request->get('type'));
@@ -83,7 +82,7 @@ class PubsController extends Controller
             } //ok normalement c bn njarrbou
 
         }
-        return $this->render('PubsBundle:Pubs:pubs.html.twig', array('pub' => $list, 'msg' => $msg));
+     //   return $this->render('PubsBundle:Pubs:pubs.html.twig', array('pub' => $list, 'msg' => $msg));
         return $this->redirectToRoute('pubs_'); //aahaya
 
     }
@@ -127,12 +126,20 @@ class PubsController extends Controller
 
     }
     public function suppAction($id)
+{
+    $mapping = $this->getDoctrine()->getManager();
+    $p =  $mapping->getRepository(Publications::class)->find($id);
+    $mapping->remove($p);
+    $mapping->flush();
+    return $this->redirectToRoute('pubs_');
+}
+    public function suppbAction($id)
     {
         $mapping = $this->getDoctrine()->getManager();
         $p =  $mapping->getRepository(Publications::class)->find($id);
         $mapping->remove($p);
         $mapping->flush();
-        return $this->redirectToRoute('pubs_');
+        return $this->redirectToRoute('backpubs');
     }
     public function signalAction(Request $request)
     {
@@ -193,6 +200,16 @@ class PubsController extends Controller
 
         return $this->render('PubsBundle:Pubs:stat.html.twig', array('piechart' => $pieChart));
     }
+
+    public function showPublicationAction()
+    {
+
+        $produits= $this->getDoctrine()->getRepository(Publications::class)->findAll();
+
+        return $this->render('PubsBundle:Pubs:blog.html.twig',['produits'=>$produits]);
+
+    }
+
 
 
 
